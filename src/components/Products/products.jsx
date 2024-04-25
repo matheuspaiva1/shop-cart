@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import './products.css'
 import fetchProducts from "../../api/fetchProducts"
 import ProductCard from "../ProductCard/productCard"
 import Loading from "../Loading/loading"
+import AppContext from "../../context/appContext"
 
 export default function Products() {
-  const [products, setProducts] = useState([])
+  
+  const {products, setProducts} = useContext(AppContext)
 
-  const [loading, setLoading] = useState(true)
+  const {loading, setLoading} = useContext(AppContext)
 
   useEffect(() => {
 

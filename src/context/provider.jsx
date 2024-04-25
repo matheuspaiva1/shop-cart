@@ -1,8 +1,7 @@
 import React, {useState} from "react";
 import propTypes from "prop-types";
 import AppContext from "./appContext";
-import Header from "../components/Header/header";
-import Products from "../components/Products/products";
+
 
 export default function Provider({children}) {
 
@@ -10,16 +9,23 @@ export default function Provider({children}) {
 
   const [loading, setLoading] = useState(true)
 
+  const [cartItems, setCartItems] = useState([])
+
+  const [isCartVisible, setIsCartVisible] = useState(false)
+
+
   const value = {
     products,
     setProducts,
     loading,
     setLoading,
+    cartItems,
+    setCartItems,
+    isCartVisible,
+    setIsCartVisible,
   }
 
-  Provider.propTypes = {
-    children: propTypes.any,
-  }.isRequired;
+  
 
   return(
     <div>
@@ -30,3 +36,7 @@ export default function Provider({children}) {
   )
 
 }
+
+Provider.propTypes = {
+  children: propTypes.any,
+}.isRequired;
